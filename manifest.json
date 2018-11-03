@@ -1,0 +1,12 @@
+{
+    "name": "X2 GPA",
+    "version": "1.0",
+    "description": "Scan X2 for Calculated GPA",
+    "manifest_version": 2,
+    "permissions": ["storage", "declarativeContent"],
+
+    "content_scripts": [{
+        "js": ["content.js"],
+        "matches": ["https://ma-chelmsford.myfollett.com/aspen/portalClassList.do?navkey=academics.classes.list"]
+    }]
+}
