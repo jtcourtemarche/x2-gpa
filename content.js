@@ -32,8 +32,6 @@ for (var c = 0; c <= list_cells.length; c++) {
 
     list_rows = list_cols.querySelectorAll('td');
 
-    //classes.push(parseFloat(list_rows[7].innerText.trim().replace(/\D\./g, '')));
-
     classes.push({
         level: filter_level(list_rows[1].innerText.trim()),
         grade: parseFloat(list_rows[7].innerText.trim().replace(/\D\./g, '')),
@@ -59,15 +57,19 @@ for (c = 0; c <= classes.length; c++) {
             {
                 case 'H3':
                     total_gpas.push(gpa_h3[Math.round(classes[c].grade)])
+                    classes[c].gpa = gpa_h3[Math.round(classes[c].grade)]
                     break;
                 case 'H2':
                     total_gpas.push(gpa_h2[Math.round(classes[c].grade)])
+                    classes[c].gpa = gpa_h2[Math.round(classes[c].grade)]
                     break;
                 case 'H':
                     total_gpas.push(gpa_h[Math.round(classes[c].grade)])
+                    classes[c].gpa = gpa_h[Math.round(classes[c].grade)]
                     break;
                 case 'AP':
                     total_gpas.push(gpa_ap[Math.round(classes[c].grade)])
+                    classes[c].gpa = gpa_ap[Math.round(classes[c].grade)]
                     break;
                 default:
                     break;
@@ -79,12 +81,28 @@ for (c = 0; c <= classes.length; c++) {
     }
 }
 
-function add(a, b) {
-    return a + b;
-}
+function add(a, b) {return a + b;}
 
 avg_grade = Math.round(sum/grades_length * 100) / 100;
 avg_gpa = Math.round(total_gpas.reduce(add, 0) / grades_length * 100) / 100;
 
-document.querySelector("#bodytop").innerText = "Average GPA: " + avg_gpa + "\n" + "Average Grade: "
-+ avg_grade;
+document.querySelector("#bodytop").innerHTML = `
+    <div class="tooltip">
+        Average GPA: `+avg_gpa+`
+        <span class="tooltiptext">`+JSON.stringify(classes, undefined, 2)+`</span>
+    </div>
+    <br/>
+    Average Grade: `+avg_grade+`
+`;
+
+// Display GPAs side by side with grade
+
+for (var c = 0; c <= list_cells.length; c++) {
+    cols = list_cells[c].querySelectorAll('td');
+    if (classes[c].gpa != undefined) {
+        if (classes[c].gpa < 3.0)
+            cols[7].innerHTML= cols[7].innerText + '<span style="color: red; float: right">'+classes[c].gpa+'</span>';
+        else
+            cols[7].innerHTML= cols[7].innerText + '<span style="color: green; float: right">'+classes[c].gpa+'</span>';
+    }
+}

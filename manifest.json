@@ -1,11 +1,11 @@
 {
     "name": "X2 GPA",
-    "version": "1.0",
-    "description": "Scan X2 for Calculated GPA",
+    "version": "1.1",
+    "description": "Weighted GPA Calculator for Chelmsford High School",
     "manifest_version": 2,
-    "permissions": ["storage", "declarativeContent"],
 
     "content_scripts": [{
+        "css": ["tooltip.css"],
         "js": ["content.js"],
         "matches": ["https://ma-chelmsford.myfollett.com/aspen/portalClassList.do?navkey=academics.classes.list"]
     }]
