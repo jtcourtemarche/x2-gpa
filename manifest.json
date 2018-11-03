@@ -5,8 +5,11 @@
     "description": "Weighted GPA Calculator for term grades at Chelmsford High School",
     "manifest_version": 2,
 
-    "default_locale": "en",
-    "icons": {"icon.png"},
+    "icons": { 
+        "16": "icon.png",
+        "48": "icon.png",
+        "128": "icon.png" 
+    },
 
     "content_scripts": [{
         "css": ["tooltip.css"],
