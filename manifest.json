@@ -15,7 +15,7 @@
         "css": ["tooltip.css"],
         "js": ["content.js"],
         "matches": [
-            "https://ma-chelmsford.myfollett.com/aspen/portalClassList.do?navkey=academics.classes.list"
+            "https://ma-chelmsford.myfollett.com/aspen/portalClassList.do*"
         ]
     }]
 }
