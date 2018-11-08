@@ -1,6 +1,6 @@
 {
     "name": "X2 GPA",
-    "version": "1.1",
+    "version": "1.2",
     "author": "Jacob Courtemarche",
     "description": "Weighted GPA Calculator for term grades at Chelmsford High School",
     "manifest_version": 2,
